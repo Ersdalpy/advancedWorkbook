@@ -8,26 +8,72 @@
 <body>
     <h1>Mortgage Calculator</h1>
     <!--Form for checking downpayment on mortgage loan-->
-    <form class="mortgage" id="mortgageForm">
-        <!-- Total amount in euros -->
-        <label for="loan">Enter total loan amount in euros</label><br>
-        <input type="number" name="loan"><br><br>
-        
-        <label for="downpay">Enter amout of immediate down payment</label><br>
-        <input type="number" name="downpay"><br><br>
-        
-        <label for="loan">Enter total loan amount in euros</label><br>
-        <input type="number" name="loan"><br><br>
+    <form id="mortgageForm">
 
-        <label for="loan">Enter your interest rate</label><br>
-        <input type="number" name="loan"><br><br>
+        <label for="homeValue">Enter home value</label><br>
+        <input type="number" id="homeValue" oninput="updateLoanAmount()"><br><br>
+        
+        <label for="homeEquity">Enter your home equity</label><br>
+        <input type="number" id="homeEquity" oninput="updateLoanAmount()"><br><br>
+        
+        <label for="loanAmount">Loan amount</label><br>
+        <input type="number" id="loanAmount" readonly><br><br>
 
-        <button type="submit" class="mortgage" value="Calculate">Calculate</button>
+        <label for="interestRate">Enter your interest rate</label><br>
+        <input type="number" id="interestRate"><br><br>
+
+        <label for="downPayYears">Downpayment in years</label><br>
+        <input type="number" id="downPayYears" min="1" max="30"><br><br>
+
+        <button type="button" onclick="calculateMortgagePayment()">Calculate</button>
     </form>
+<br>
+    <div id="resultOfCalculation"></div>
 
     <!--Javascript code to calculation the downpayment of the loan amount entered-->
-    <script class="downpayment">
-        let loanAmount = test;
+    <script>
+
+        function updateLoanAmount() {
+            let homeValue = parseFloat(document.getElementById("homeValue").value) || 0;
+            let homeEquity = parseFloat(document.getElementById("homeEquity").value) || 0;
+            let loanAmount = homeValue - homeEquity;
+           
+            if (loanAmount >= 0) {
+                document.getElementById("loanAmount").value = loanAmount;
+            }
+            else {
+                document.getElementById("loanAmount").value = '';
+            }
+        }
+
+        function calculateMortgagePayment() {
+            let loanAmount = parseFloat(document.getElementById("loanAmount").value);
+            let interestRate = parseFloat(document.getElementById("interestRate").value);
+            let downPayYears = parseFloat(document.getElementById("downPayYears").value);
+
+            if (loanAmount < 0 || interestRate < 0 || downPayYears <=0 || downPayYears > 30){
+                document.getElementById("resultOfCalculation").innerHTML = "ERROR:<br>- Please use non-negative numbers to calculate.<br>- Years of downpayment should be between 1 and 30";
+                return;
+            }
+        
+            if (loanAmount && interestRate && downPayYears) {
+                const monthlyInterest = (interestRate / 100) / 12;
+                const totalMonthsOfPayment = downPayYears * 12;
+                
+                let monthlyPayment = loanAmount * (monthlyInterest *Math.pow(1 + monthlyInterest, totalMonthsOfPayment)) / (Math.pow(1 + monthlyInterest, totalMonthsOfPayment) - 1);
+
+                if (isFinite(monthlyPayment)) {
+                    document.getElementById("resultOfCalculation").innerHTML = "Your monthly mortgage payment is: " + monthlyPayment.toFixed(2);
+                }
+                else {
+                    document.getElementById("resultOfCalculation").innerHTML = "You have entered incorrect information, please check your input values.";
+                }
+            }
+            else{
+                document.getElementById("resultOfCalculation").innerHTML = "Please fill in all fields to calculate.";
+            }
+        }
     </script>
+
 </body>
 </html>
