@@ -3,69 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mortgage Calculator</title>
 </head>
 <body>
+    <!--Displayed title text within the body-->
     <h1>Mortgage Calculator</h1>
-    <!--Form for checking downpayment on mortgage loan-->
+
+    <!--Creating a form to enter information about the mortgage calculation-->
     <form id="mortgageForm">
 
+        <!-- Creating fields where only numbers are allowed to be entered.
+        All of the number fields created also has a label to display what text should be written in the respective fields.
+        homeValue and homeEquity is assigned the updateLoanAmount() function to automaticly update the field loanAmount.
+        At the end of all fields i have added some <br> tags, these provide one line break per tag.-->
         <label for="homeValue">Enter home value</label><br>
         <input type="number" id="homeValue" oninput="updateLoanAmount()"><br><br>
         
+        <!-- homeValue and homeEquity is assigned the updateLoanAmount() function to automaticly update the field loanAmount -->
         <label for="homeEquity">Enter your home equity</label><br>
         <input type="number" id="homeEquity" oninput="updateLoanAmount()"><br><br>
         
+        <!-- This is the field to be automaticly updates by the two above. This is set to a readonly, meaning it cant be changed without changing the homeValue and homeEquity fields-->
         <label for="loanAmount">Loan amount</label><br>
         <input type="number" id="loanAmount" readonly><br><br>
 
+        <!--This number field is where you type your percentage of interest rate-->
         <label for="interestRate">Enter your interest rate</label><br>
         <input type="number" id="interestRate"><br><br>
 
+        <!--Another number field where you can enter the amount of years you want to pay down your loan,
+            if you use the arrows on the right of the field to choose, minimum is 1 and maximum is 30.
+            If you type a number under or above my function calculateMortagePayment() will display an error-->
         <label for="downPayYears">Downpayment in years</label><br>
         <input type="number" id="downPayYears" min="1" max="30"><br><br>
-
+        
+        <!--Standard button to calculate the information given in the field above.
+            In order to work this has a onclick attribute attached to the calculateMortgagePayment() function, which means when the button is clicked, the function runs-->
         <button type="button" onclick="calculateMortgagePayment()">Calculate</button>
-    </form>
-<br>
+
+    </form> <!--End of form-->
+    <br><!--Line break-->
+
+    <!--This creates a container to be used to display the result of the calculation, the text to be displayed is defined in the calculateMortgagePayment() function below.-->
     <div id="resultOfCalculation"></div>
 
     <!--Javascript code to calculation the downpayment of the loan amount entered-->
+    <!--The <script> tag allows us to write Javascript inside the html file.-->
     <script>
 
+        //Creating the function updateLoanAmount which will automaticly update the number field of id loanAmount.
         function updateLoanAmount() {
+
+            /*1. Line below creates a variable called homeValue, this is assigned the value that is typed into the homeValue field of the html.
+            2. parseFloat is used to convert the string fetched from the input field into a floating-point number.
+            3. document.getElementById() recieves the input of the of the id entered within the parentheses of the function.
+            4. Then we add .value to recieve a string from the information given by the chosen id input of the function.
+            5. OR (||) it is assigned the value 0*/
             let homeValue = parseFloat(document.getElementById("homeValue").value) || 0;
+
+            //Variable called homeEquity is assigned a numerical float value revieved from the string value of the chosen ID, OR (||) it is assigned the value 0.
             let homeEquity = parseFloat(document.getElementById("homeEquity").value) || 0;
+
+            //This variable has a name of loanAmount, the variable is assigned the value left after substracting homeEquity from homeValue.
             let loanAmount = homeValue - homeEquity;
            
+            //This is a statement with a condition within parentheses, if the value of loanAmount is bigger og equal to 0, then enter the curly brackets and perform orders given within.
             if (loanAmount >= 0) {
+                //This line is used if the condition above is true. If true, it assigns the loanAmount variable to the field with id loanAmount.
                 document.getElementById("loanAmount").value = loanAmount;
             }
+            //The else statement only gets executed if the If statement is false. If executed, this else statement assigns a empty space to the field with id loanAmount.
             else {
                 document.getElementById("loanAmount").value = '';
             }
         }
-
+        //The line below creates a function called calculateMortgagePayment. This function is the core function of the whole calculator, calculating all of the values entered by the user.
         function calculateMortgagePayment() {
+
+            //Variable called loanAmount is assigned a numerical value, this is recieved by converting or parsing the string fetched from the value entered in the field with an id of loanAmount.
             let loanAmount = parseFloat(document.getElementById("loanAmount").value);
+
+            //Variable called interestRate is assigned a numerical value, this is recieved by converting or parsing the string fetched from the value entered in the field with an id of interestRate.
             let interestRate = parseFloat(document.getElementById("interestRate").value);
+
+            //Variable called downPayYears is assigned a numerical value, this is recieved by converting or parsing the string fetched from the value entered in the field with an id of downPayYears.
             let downPayYears = parseFloat(document.getElementById("downPayYears").value);
 
+            //If statement with a condition. The condition is fullfilled if loanAMount or interestRate are negative integers, or if downPayYears is less than or equal to 0 or bigger than 30.
             if (loanAmount < 0 || interestRate < 0 || downPayYears <=0 || downPayYears > 30){
+
+                /*If the condition is true, a error message message is run inside the div with the id of resultOfCalculation.
+                The getElementById is used to fetch the element with the id given inside the parentheses, then .innerHTML is used to generate the given string message within the HTML element with the id.*/
                 document.getElementById("resultOfCalculation").innerHTML = "ERROR:<br>- Please use non-negative numbers to calculate.<br>- Years of downpayment should be between 1 and 30";
+
+                //The return statement exits the current function after executing the preceding block of code.
                 return;
             }
-        
+            //If statement with a condition. If and only if loanAmount AND interestRate AND downPayYears variables are all true, enter the block within curly brackets and execute it. 
             if (loanAmount && interestRate && downPayYears) {
+
+                /*const is a variable declaration, difference between const and let or var is that the value of the const variable cannot be reassigned later in the code.
+                Also const needs the variable to be initialized at the time of declaration.
+                The const variable named monthlyInterest is assigned the value of interestRate divided by 100, divided by 12 (months)*/
                 const monthlyInterest = (interestRate / 100) / 12;
+
+                //const variable named totalMonthsOfPayment is assigned the value of downPayYears times 12. This represents the total amount of months to repay the loan.
                 const totalMonthsOfPayment = downPayYears * 12;
                 
+                /*Variable named monthlyPayment is assigned the value of the mortgage calculation.
+                The information within the paretheses represents the calculation of a monthly payment of a mortgage. Math.pow is used to represent the power of a value*/
                 let monthlyPayment = loanAmount * (monthlyInterest *Math.pow(1 + monthlyInterest, totalMonthsOfPayment)) / (Math.pow(1 + monthlyInterest, totalMonthsOfPayment) - 1);
 
+                //If statement with a condition saying that if monthyPayment is finite, not infinite or NaN (not a number), run the block of code within the curly brackets. To decide if its finite, the function isFinite() is used.
                 if (isFinite(monthlyPayment)) {
+
+                    /*If the condition is true, a string with the correct calculation of the monthly mortgage payment will be shown in the div with the id of resultOfCalculation.
+                The getElementById is used to fetch the element with the id given inside the parentheses, then .innerHTML is used to generate the given string message within the HTML element with the id.*/
                     document.getElementById("resultOfCalculation").innerHTML = "Your monthly mortgage payment is: " + monthlyPayment.toFixed(2);
                 }
+                //If the condition is false, the else statement will be run.
                 else {
+                    /*This provides a string telling the user that the information is incorrect will be shown in the div with the id of resultOfCalculation.
+                The getElementById is used to fetch the element with the id given inside the parentheses, then .innerHTML is used to generate the given string message within the HTML element with the id.*/
                     document.getElementById("resultOfCalculation").innerHTML = "You have entered incorrect information, please check your input values.";
                 }
             }
