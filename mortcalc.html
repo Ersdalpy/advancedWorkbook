@@ -71,12 +71,12 @@
             if (loanAmount >= 0) {
                 //This line is used if the condition above is true. If true, it assigns the loanAmount variable to the field with id loanAmount.
                 document.getElementById("loanAmount").value = loanAmount;
-            }
+            }//if
             //The else statement only gets executed if the If statement is false. If executed, this else statement assigns a empty space to the field with id loanAmount.
             else {
                 document.getElementById("loanAmount").value = '';
-            }
-        }
+            }//else
+        }//function
         //The line below creates a function called calculateMortgagePayment. This function is the core function of the whole calculator, calculating all of the values entered by the user.
         function calculateMortgagePayment() {
 
@@ -98,7 +98,7 @@
 
                 //The return statement exits the current function after executing the preceding block of code.
                 return;
-            }
+            }//if
             //If statement with a condition. If and only if loanAmount AND interestRate AND downPayYears variables are all true, enter the block within curly brackets and execute it. 
             if (loanAmount && interestRate && downPayYears) {
 
@@ -114,24 +114,31 @@
                 The information within the paretheses represents the calculation of a monthly payment of a mortgage. Math.pow is used to represent the power of a value*/
                 let monthlyPayment = loanAmount * (monthlyInterest *Math.pow(1 + monthlyInterest, totalMonthsOfPayment)) / (Math.pow(1 + monthlyInterest, totalMonthsOfPayment) - 1);
 
-                //If statement with a condition saying that if monthyPayment is finite, not infinite or NaN (not a number), run the block of code within the curly brackets. To decide if its finite, the function isFinite() is used.
+                //Nested If statement with a condition saying that if monthyPayment is finite, not infinite or NaN (not a number), run the block of code within the curly brackets. To decide if its finite, the function isFinite() is used.
                 if (isFinite(monthlyPayment)) {
 
-                    /*If the condition is true, a string with the correct calculation of the monthly mortgage payment will be shown in the div with the id of resultOfCalculation.
+                    /*If the condition is true, a string with the correct calculation of the monthly mortgage payment will be printed inside the div with the id of resultOfCalculation.
                 The getElementById is used to fetch the element with the id given inside the parentheses, then .innerHTML is used to generate the given string message within the HTML element with the id.*/
                     document.getElementById("resultOfCalculation").innerHTML = "Your monthly mortgage payment is: " + monthlyPayment.toFixed(2);
-                }
-                //If the condition is false, the else statement will be run.
+                }//if
+
+                //If the condition of the nested If statement is false, this else statement will be run.
                 else {
-                    /*This provides a string telling the user that the information is incorrect will be shown in the div with the id of resultOfCalculation.
+
+                    /*This provides a string telling the user that the information is incorrect will be printed inside the div with the id of resultOfCalculation.
                 The getElementById is used to fetch the element with the id given inside the parentheses, then .innerHTML is used to generate the given string message within the HTML element with the id.*/
                     document.getElementById("resultOfCalculation").innerHTML = "You have entered incorrect information, please check your input values.";
-                }
-            }
+                }//else
+            }//if
+
+            //If the condtion of the parent If statement is false, meaning that all the variables doesnt have the correct value, this else statement is run.
             else{
+                /* This line provdes a string that will be printed inside the div with the id of resultOfCalculation.
+                The getElementById is used to fetch the element with the id given inside the parentheses, then .innerHTML is used to generate the given string message within the HTML element with the id.*/
                 document.getElementById("resultOfCalculation").innerHTML = "Please fill in all fields to calculate.";
-            }
-        }
+            }//else
+        }//function
+        
     </script>
 
 </body>
