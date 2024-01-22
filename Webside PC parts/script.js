@@ -5,9 +5,12 @@ document.getElementById("formOrders").addEventListener('submit', function(event)
     const quantity = document.getElementById('quantity').value;
 
     if (quantity < 1){
-        alert(`Your order doesnt include any products`);
+        alert(`Error: Your order doesnt include any products`);
+    }
+    else if (quantity == 1){
+        alert(`Order placed for ${quantity} ${component}!`);
     }
     else{
         alert(`Order placed for ${quantity} ${component}s!`);
-    }
+        }
 });
