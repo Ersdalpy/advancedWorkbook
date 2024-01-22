@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC parts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="containerMain">
+        <h1>Order your computer parts here!</h1>
+        <form id="formOrders">
+            <label for="component">Select component:</label>
+            <select name="component" id="component">
+                <option value="Motherboard">Motherboard</option>
+                <option value="GPU">Graphics Card</option>
+                <option value="CPU">Prosessor</option>
+                <option value="PSU">Power Supply</option>
+                <option value="RAM">RAM</option>
+                <option value="HardDrive">Hard Drive</option>
+            </select>
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" value="1">
+            <br>
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
