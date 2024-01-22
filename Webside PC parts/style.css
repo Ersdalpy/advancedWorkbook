@@ -1,10 +1,10 @@
     body{
-        background-image: url('https://i.imgur.com/WKhMeqz.png');
+        background-image: url('https://i.ibb.co/DWHzCXF/DALL-E-2024-01-21-14-13-14-Create-a-close-up-minimalistic-image-focusing-on-computer-components-like.png');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-color: blue;
+        background-color: rgb(83, 116, 126);
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         display: flex;
         justify-content: center;
@@ -19,8 +19,8 @@
         text-shadow: 0 0 10px rgba(0, 0, 0, 0.247);
     }
     .containerMain{
-        background-color: rgb(0, 255, 255);
-        border-radius: 10px;
+        background-color: rgba(107, 240, 222, 0.8);
+        border-radius: 12px;
         padding: 20px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.24);
     }
@@ -38,6 +38,9 @@
         border: 1px solid whitesmoke;
         font-size: medium;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    input, select{
+        background-color: rgba(255, 255, 255, 0.767);
     }
     #quantity{
         width: 40px;
