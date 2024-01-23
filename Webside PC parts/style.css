@@ -4,7 +4,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-color: rgb(83, 116, 126);
+        background-color: rgb(123, 235, 226);
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         display: flex;
         justify-content: center;
@@ -19,15 +19,42 @@
         text-shadow: 0 0 10px rgba(0, 0, 0, 0.247);
     }
     .containerMain{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         background-color: rgba(107, 240, 222, 0.8);
         border-radius: 12px;
-        padding: 20px;
+        padding: 50px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.24);
     }
     #formOrders{
         display: flex;
         flex-direction: column;
-
+        align-items: center;
+        width: 100%;
+    }
+    .form-row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+    }
+    .selectComponentAndQuantity{
+        display: flex;
+        flex-direction: column;
+        margin-right: 25px;
+    }
+    .selectComponentAndQuantity:last-child{
+        margin-right: 0px;
+    }
+    .submitButton{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 10px;
     }
     input, select, button{
         align-items: center;
@@ -42,8 +69,11 @@
     input, select{
         background-color: rgba(255, 255, 255, 0.767);
     }
+    input{
+        text-align: center;
+    }
     #quantity{
-        width: 40px;
+        width: 50px;
     }
     label{
         margin-top: 10px;

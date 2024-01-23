@@ -7,23 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--div providing the square of the website -->
     <div class="containerMain">
         <h1>ORDER YOUR PC NOW!</h1>
+        <!--Form with the different computer parts available-->
         <form id="formOrders">
-            <label for="component">Select component:</label>
-            <select name="component" id="component">
-                <option value="Motherboard">Motherboard</option>
-                <option value="Graphics Card">Graphics Card</option>
-                <option value="Prosessor">Prosessor</option>
-                <option value="Power Supply">Power Supply</option>
-                <option value="RAM">RAM</option>
-                <option value="Hard Drive">Hard Drive</option>
-            </select>
+            <div class="form-row">
+                <div class="selectComponentAndQuantity">
+                    <label for="component">Select component:</label>
+                    <!--Select gives us a dropdown with all the components entered within the option brackets-->
+                    <select name="component" id="component">
+                        <option value="Motherboard">Motherboard</option>
+                        <option value="Graphics Card">Graphics Card</option>
+                        <option value="Prosessor">Prosessor</option>
+                        <option value="Power Supply">Power Supply</option>
+                        <option value="RAM">RAM</option>
+                        <option value="Hard Drive">Hard Drive</option>
+                    </select>
+                </div>
+                
+                <div class="selectComponentAndQuantity">
+                    <label for="quantity">Quantity:</label>
+                    <!--This input provides us with a field where we can enter the amount of components we want to order-->
+                    <input type="number" name="quantity" id="quantity" value="1" min="1">
+                </div>
+            </div>
             
-            <label for="quantity">Quantity:</label>
-            <input type="number" name="quantity" id="quantity" value="1" min="1">
-            <br>
-            <button type="submit">Submit Order</button>
+            <div class="submitButton">
+                <!--Sumbit button sending the order, or in this case showing us the alerts-->
+                <button type="submit">Submit Order</button>
+            </div>
         </form>
     </div>
     <script src="script.js"></script>
