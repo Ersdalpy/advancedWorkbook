@@ -1,129 +1,147 @@
-     @media screen and (max-width: 600px) {
-        .containerMain{
-            padding: 20px;
-            border-radius: 8px;
-        }
-        h1{
-            font-size: large;
-            color: blueviolet;
-        }
-        .form-row, #formOrders{
-            flex-direction: column;
-            align-items: center;
-        }
-        .selectComponentAndQuantity{
-            margin-right: 0;
-            width: 100%;
-        }
-        .selectComponentAndQuantity label, .selectComponentAndQuantity select{
-            width: 100%;
-            text-align: center;
-        }
-        button{
-            width: 100%;
-            padding: 15px;
-        }
-        
-     }
-    body{
-        background-image: url('https://i.ibb.co/DWHzCXF/DALL-E-2024-01-21-14-13-14-Create-a-close-up-minimalistic-image-focusing-on-computer-components-like.png');
-        background-size:cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-color: rgb(123, 235, 226);
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-    h1{
-        color: rgb(0, 0, 0);
-        text-align: center;
-        font-size:x-large;
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.247);
-    }
+/* General styles */
+body{
+    background-image: url('https://i.ibb.co/DWHzCXF/DALL-E-2024-01-21-14-13-14-Create-a-close-up-minimalistic-image-focusing-on-computer-components-like.png');
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgb(123, 235, 226);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size:x-large;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.247);
+}
+
+/* Container style */
+.containerMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(107, 240, 222, 0.8);
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.24);
+}
+
+/* Form styles */
+#formOrders{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+.selectComponentAndQuantity{
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+}
+.selectComponentAndQuantity:last-child{
+    margin-right: 0px;
+}
+
+/* Input, Select and Button styles */
+input, select, button{
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 3px;
+    border: 1px solid whitesmoke;
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgba(255, 255, 255, 0.767);
+}
+
+input{
+    text-align: center;
+}
+
+#quantity{
+    width: 50px;
+}
+
+label{
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+button{
+    font-size: large;
+    font-weight: 500;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(0, 119, 255);
+    color: whitesmoke;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    
+}
+
+.submitButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px; 
+}
+
+button:hover{
+    background-color: rgb(1, 82, 175);
+}
+
+/* Media Query for screens smaller than 600px */
+@media screen and (max-width: 600px) {
     .containerMain{
-        display: flex;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    h1{
+        font-size: large;
+        color: rgb(0, 1, 31);
+    }
+
+    .form-row, #formOrders{
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        background-color: rgba(107, 240, 222, 0.8);
-        border-radius: 12px;
-        padding: 50px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.24);
     }
-    #formOrders{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    .form-row{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-    }
+
     .selectComponentAndQuantity{
-        display: flex;
-        flex-direction: column;
-        margin-right: 25px;
-    }
-    .selectComponentAndQuantity:last-child{
-        margin-right: 0px;
-    }
-    .submitButton{
+        margin-right: 0;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        padding-top: 10px;
-    }
-    input, select, button{
         align-items: center;
-        justify-content: center;
-        padding: 10px;
-        margin-top: 8px;
-        border-radius: 3px;
-        border: 1px solid whitesmoke;
-        font-size: medium;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        /* box-sizing: border-box; */
     }
-    input, select{
-        background-color: rgba(255, 255, 255, 0.767);
-    }
-    input{
+
+    .selectComponentAndQuantity label, .selectComponentAndQuantity select{
+        width: 100%;
         text-align: center;
     }
-    #quantity{
-        width: 50px;
-    }
-    label{
-        margin-top: 10px;
-        font-weight: 500;
-    }
+
     button{
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: large;
-        font-weight: 500;
-        width: 90%;
-        max-width: 500px;
-        padding: 20px;
-        margin: 10px;
-        background-color: rgb(0, 119, 255);
-        color: whitesmoke;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        
+        width: 100%;
+        padding: 15px;
     }
-    button:hover{
-        background-color: rgb(1, 82, 175);
-    }
-    label{
-        margin-top: 10px;
-    }
+    
+}
