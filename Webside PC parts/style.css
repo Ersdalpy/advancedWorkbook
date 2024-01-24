@@ -1,6 +1,33 @@
+     @media screen and (max-width: 600px) {
+        .containerMain{
+            padding: 20px;
+            border-radius: 8px;
+        }
+        h1{
+            font-size: large;
+            color: blueviolet;
+        }
+        .form-row, #formOrders{
+            flex-direction: column;
+            align-items: center;
+        }
+        .selectComponentAndQuantity{
+            margin-right: 0;
+            width: 100%;
+        }
+        .selectComponentAndQuantity label, .selectComponentAndQuantity select{
+            width: 100%;
+            text-align: center;
+        }
+        button{
+            width: 100%;
+            padding: 15px;
+        }
+        
+     }
     body{
         background-image: url('https://i.ibb.co/DWHzCXF/DALL-E-2024-01-21-14-13-14-Create-a-close-up-minimalistic-image-focusing-on-computer-components-like.png');
-        background-size: cover;
+        background-size:cover;
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
